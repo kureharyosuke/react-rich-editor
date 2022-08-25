@@ -1,6 +1,8 @@
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
 
+//https://blog.logrocket.com/build-a-wysiwyg-text-editor-using-quill/
+
 const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading ...</p>,
@@ -8,8 +10,10 @@ const QuillNoSSRWrapper = dynamic(import("react-quill"), {
 
 const modules = {
   toolbar: [
-    [{ header: "1" }, { header: "2" }, { font: [] }],
+    [{ font: [] }],
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
     [{ size: [] }],
+    [{ color: [] }, { background: [] }],
     ["bold", "italic", "underline", "strike", "blockquote"],
     [
       { list: "ordered" },
@@ -17,7 +21,7 @@ const modules = {
       { indent: "-1" },
       { indent: "+1" },
     ],
-    ["link", "image", "video"],
+    ["image"],
     ["clean"],
   ],
   clipboard: {
@@ -55,7 +59,9 @@ export const CustomEditor = () => {
         modules={modules}
         formats={formats}
         theme="snow"
+        placeholder="Content goes here..."
       />
+      {value}
     </div>
   );
 };
