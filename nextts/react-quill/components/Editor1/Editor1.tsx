@@ -1,18 +1,23 @@
 import dynamic from "next/dynamic";
 import React, { useState, useMemo } from "react";
+
+const QuillNoSSRWrapper = dynamic(import("react-quill"), {
+  ssr: false,
+  loading: () => <p>Loading ...</p>,
+});
 /*
  * Quill editor formats
  * See https://quilljs.com/docs/formats/
  */
+
 const formats = ["header", "font", "size", "bold", "image"];
 
 export const Editor1 = () => {
-  const [value, setValue] = useState("");
-
-  const QuillNoSSRWrapper = dynamic(import("react-quill"), {
-    ssr: false,
-    loading: () => <p>Loading ...</p>,
-  });
+  const [contents, setContents] = useState("");
+  console.log(
+    `🚀 ~ file: Editor1.tsx ~ line 17 ~ Editor1 ~ contents`,
+    contents
+  );
 
   const modules = useMemo(
     () => ({
@@ -42,13 +47,13 @@ export const Editor1 = () => {
   return (
     <div>
       <QuillNoSSRWrapper
-        onChange={(value) => setValue(value)}
+        onChange={(contents) => setContents(contents)}
         modules={modules}
         formats={formats}
         theme="snow"
         placeholder="Editor1 goes here..."
       />
-      {value}
+      <QuillNoSSRWrapper value={contents} readOnly={true} theme={"bubble"} />
     </div>
   );
 };

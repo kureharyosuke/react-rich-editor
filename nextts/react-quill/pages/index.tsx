@@ -14,8 +14,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <CustomEditor />
-      {/* <Editor1 /> */}
+      {/* <CustomEditor /> */}
+      <Editor1 />
     </div>
   );
 };
