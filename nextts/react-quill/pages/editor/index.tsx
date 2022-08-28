@@ -1,12 +1,10 @@
 import type { NextPage } from "next";
-import { CustomEditor } from "../../components/CustomEditor";
-import { Editor } from "../../components/Editor";
+import { CustomEditor } from "../../components/Editor/CustomEditor";
 
 const EditorPage: NextPage = () => {
   return (
     <div>
       <CustomEditor />
-      {/* <Editor /> */}
     </div>
   );
 };

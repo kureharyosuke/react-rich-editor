@@ -52,6 +52,7 @@ const formats = [
 
 export const CustomEditor = () => {
   const [value, setValue] = useState("");
+
   return (
     <div>
       <QuillNoSSRWrapper
@@ -59,7 +60,7 @@ export const CustomEditor = () => {
         modules={modules}
         formats={formats}
         theme="snow"
-        placeholder="Content goes here..."
+        placeholder="QuillNoSSRWrapper goes here..."
       />
       {value}
     </div>
