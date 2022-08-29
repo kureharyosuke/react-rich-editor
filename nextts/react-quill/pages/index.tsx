@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { CustomEditor } from "../components/Editor/CustomEditor";
 import { Editor1 } from "../components/Editor1/Editor1";
+import { QuillEditor } from "../components/Quill/Quill";
 
 const Home: NextPage = () => {
   return (
@@ -15,7 +16,8 @@ const Home: NextPage = () => {
       </Head>
 
       {/* <CustomEditor /> */}
-      <Editor1 />
+      {/* <Editor1 /> */}
+      <QuillEditor />
     </div>
   );
 };

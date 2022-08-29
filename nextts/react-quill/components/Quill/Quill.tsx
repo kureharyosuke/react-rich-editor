@@ -1,6 +1,10 @@
+// import dynamic from "next/dynamic";
+// const Quill = dynamic(() => import("quill"));
 import React, { useEffect, useRef } from "react";
+
 // editor import
-import Quill from "quill";
+// import Quill from "quill";
+const Quill = typeof window === "object" ? require("quill") : () => false;
 import "quill/dist/quill.bubble.css"; // styled-component import
 import styled from "styled-components";
 
