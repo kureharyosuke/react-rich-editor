@@ -5,6 +5,7 @@ const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading ...</p>,
 });
+
 /*
  * Quill editor formats
  * See https://quilljs.com/docs/formats/
@@ -14,10 +15,16 @@ const formats = ["header", "font", "size", "bold", "image"];
 
 export const Editor1 = () => {
   const [contents, setContents] = useState("");
-  console.log(
-    `🚀 ~ file: Editor1.tsx ~ line 17 ~ Editor1 ~ contents`,
-    contents
-  );
+
+  // onChange expects a function with these 4 arguments
+  const handleChange = (content, delta, source, editor) => {
+    setContents(editor.getContents());
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+  };
 
   const modules = useMemo(
     () => ({
@@ -47,12 +54,13 @@ export const Editor1 = () => {
   return (
     <div>
       <QuillNoSSRWrapper
-        onChange={(contents) => setContents(contents)}
+        onChange={handleChange}
         modules={modules}
         formats={formats}
         theme="snow"
         placeholder="Editor1 goes here..."
       />
+      <button onClick={submit}>Sumbit</button>
       <QuillNoSSRWrapper value={contents} readOnly={true} theme={"bubble"} />
     </div>
   );
