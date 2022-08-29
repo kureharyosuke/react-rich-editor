@@ -61,7 +61,7 @@ export const Editor1 = () => {
         placeholder="Editor1 goes here..."
       />
       <button onClick={submit}>Sumbit</button>
-      <QuillNoSSRWrapper value={contents} readOnly={true} theme={"bubble"} />
+      <QuillNoSSRWrapper value={contents} readOnly={true} theme={"snow"} />
     </div>
   );
 };
