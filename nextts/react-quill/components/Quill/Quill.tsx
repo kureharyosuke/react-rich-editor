@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from "react";
 // editor import
 // import Quill from "quill";
 const Quill = typeof window === "object" ? require("quill") : () => false;
+import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css"; // styled-component import
 import styled from "styled-components";
 
@@ -51,7 +52,7 @@ export const QuillEditor = () => {
     // useRef 로 DOM 요소에 접근하려면 .current 사용
     quillInstance.current = new Quill(quillElement.current, {
       // 테마 snow, bubble 두 가지가 있으며 불러올 때  'quill/dist/quill.snow.css', 'quill/dist/quill.bubble.css' 두 가지중 골라서 사용
-      theme: "bubble",
+      theme: "snow",
       placeholder: "내용을 작성하세요..",
       modules: {
         toolbar: [
