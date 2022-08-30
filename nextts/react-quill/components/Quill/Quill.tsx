@@ -68,10 +68,10 @@ export const QuillEditor = () => {
   }, []);
   return (
     <EditorBlock>
-      <TitleInput placeholder="제목을 입력하세요.." />
-      <QuillWrapper>
+      {/* <TitleInput placeholder="제목을 입력하세요.." /> */}
+      <QuillWrapper ref={quillElement}>
         {/* 컴포넌트 내부의 DOM 을 외부에서도 사용하기 위해 컴포넌트에 직접 ref 전달 == DOM 에 ref 를 다는 것과 같음 */}
-        <div ref={quillElement} />
+        {/* <div ref={quillElement} /> */}
       </QuillWrapper>
     </EditorBlock>
   );

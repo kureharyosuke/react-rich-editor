@@ -16,8 +16,8 @@ const Home: NextPage = () => {
       </Head>
 
       {/* <CustomEditor /> */}
-      {/* <Editor1 /> */}
-      <QuillEditor />
+      <Editor1 />
+      {/* <QuillEditor /> */}
     </div>
   );
 };

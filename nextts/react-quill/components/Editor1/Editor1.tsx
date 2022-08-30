@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import React, { useState, useMemo } from "react";
 
-const QuillNoSSRWrapper = dynamic(import("react-quill"), {
+const ReactQuill = dynamic(import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading ...</p>,
 });
@@ -17,7 +17,7 @@ export const Editor1 = () => {
   const [contents, setContents] = useState("");
 
   // onChange expects a function with these 4 arguments
-  const handleChange = (content, delta, source, editor) => {
+  const handleChange = (editor: any) => {
     setContents(editor.getContents());
   };
 
@@ -53,15 +53,17 @@ export const Editor1 = () => {
 
   return (
     <div>
-      <QuillNoSSRWrapper
-        onChange={handleChange}
+      <ReactQuill
+        onChange={(content, delta, source, editor) =>
+          setContents(editor.getHTML())
+        }
         modules={modules}
         formats={formats}
         theme="snow"
         placeholder="Editor1 goes here..."
       />
       <button onClick={submit}>Sumbit</button>
-      <QuillNoSSRWrapper value={contents} readOnly={true} theme={"snow"} />
+      <ReactQuill value={contents} readOnly={true} theme={"snow"} />
     </div>
   );
 };
