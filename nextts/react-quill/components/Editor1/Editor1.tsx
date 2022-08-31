@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, ChangeEvent } from "react";
 
 const ReactQuill = dynamic(import("react-quill"), {
   ssr: false,
@@ -21,9 +21,8 @@ export const Editor1 = () => {
     setContents(editor.getContents());
   };
 
-  const submit = (e) => {
-    e.preventDefault();
-    console.log(e.target.value);
+  const submit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
   };
 
   const modules = useMemo(
@@ -52,7 +51,7 @@ export const Editor1 = () => {
   );
 
   return (
-    <div>
+    <form onSubmit={submit}>
       <ReactQuill
         onChange={(content, delta, source, editor) =>
           setContents(editor.getHTML())
@@ -62,8 +61,8 @@ export const Editor1 = () => {
         theme="snow"
         placeholder="Editor1 goes here..."
       />
-      <button onClick={submit}>Sumbit</button>
       <ReactQuill value={contents} readOnly={true} theme={"snow"} />
-    </div>
+      <button>Sumbit</button>
+    </form>
   );
 };
