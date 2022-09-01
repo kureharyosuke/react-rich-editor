@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@toast-ui/react-editor": "^3.2.0",
     "@types/quill": "^2.0.9",
     "next": "12.2.5",
     "quill": "^1.3.7",
