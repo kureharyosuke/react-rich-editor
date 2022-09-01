@@ -1,7 +1,7 @@
-import dynamic from 'next/dynamic';
-import React, { useRef, useCallback, forwardRef } from 'react';
-import { Editor as EditorType, EditorProps } from '@toast-ui/react-editor';
-import { TuiEditorWithForwardedProps } from './TUIEditorWrapper';
+import dynamic from "next/dynamic";
+import React, { useRef, useCallback, forwardRef } from "react";
+import { Editor as EditorType, EditorProps } from "@toast-ui/react-editor";
+import { TuiEditorWithForwardedProps } from "./TUIEditorWrapper";
 
 interface IEditorPropsWithHandlers extends EditorProps {
   onChange?(value: string): void;
@@ -14,7 +14,7 @@ interface ITUIEditorProps extends EditorProps {
 const Editor = dynamic<TuiEditorWithForwardedProps>(
   async () => {
     const [mod] = await Promise.all([
-      import('./TUIEditorWrapper'),
+      import("./TUIEditorWrapper"),
       // import('@toast-ui/editor/dist/i18n/ko-kr'), // to implement Korean
     ]);
     return mod.default;
@@ -24,6 +24,7 @@ const Editor = dynamic<TuiEditorWithForwardedProps>(
     ssr: false,
   }
 );
+// eslint-disable-next-line react/display-name
 const EditorWithForwardedRef = React.memo(
   forwardRef<EditorType | undefined, IEditorPropsWithHandlers>((props, ref) => (
     <Editor
@@ -50,25 +51,25 @@ const TUIEditor = ({ onChange, ...props }: ITUIEditorProps) => {
       <EditorWithForwardedRef
         ref={editorRef}
         language="ko-KR"
-        previewStyle="tab
+        previewStyle="tab"
         hideModeSwitch
         usageStatistics={false}
         initialValue={initialValue}
-        height={height || '600px'}
+        height={height || "600px"}
         onChange={handleChange}
         initialEditType="wysiwyg"
         toolbarItems={[
           [
-            'heading',
-            'bold',
-            'italic',
-            'strike',
-            'hr',
-            'ul',
-            'ol',
-            'indent',
-            'outdent',
-            'link',
+            "heading",
+            "bold",
+            "italic",
+            "strike",
+            "hr",
+            "ul",
+            "ol",
+            "indent",
+            "outdent",
+            "link",
           ],
         ]}
         {...props}
