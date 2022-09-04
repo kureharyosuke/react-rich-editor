@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import * as React from "react";
 import { Editor as EditorType, EditorProps } from "@toast-ui/react-editor";
 import { TuiEditorWithForwardedProps } from "./TuiEditorWrapper";
+import "@toast-ui/editor/dist/toastui-editor.css";
 
 interface EditorPropsWithHandlers extends EditorProps {
   onChange?(value: string): void;
