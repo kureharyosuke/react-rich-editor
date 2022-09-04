@@ -6,7 +6,7 @@ import { CustomEditor } from "../components/Editor/CustomEditor";
 import { Editor1 } from "../components/Editor1/Editor1";
 import { QuillEditor } from "../components/Quill/Quill";
 import TUIEditor from "../components/Toast/ToastEditor";
-import { ToastEditor } from "../components/Toast1/Toast1";
+import WysiwygEditor from "../components/Toast1/Toast1";
 
 const Home: NextPage = () => {
   return (
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
       {/* <CustomEditor /> */}
       {/* <Editor1 /> */}
       {/* <TUIEditor onChange={(e) => console.log(e)} /> */}
-      <ToastEditor />
+      <WysiwygEditor onChange={(e) => console.log(e)} />
       {/* <QuillEditor /> */}
     </div>
   );
