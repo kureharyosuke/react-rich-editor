@@ -43,7 +43,7 @@ const WysiwygEditor: React.FC<Props> = (props) => {
     const valueType = props.valueType || "markdown";
 
     props.onChange(
-      valueType === "markdown" ? instance.getMarkdown() : instance.getHtml()
+      valueType === "markdown" ? instance.getMarkdown() : instance.getHTML()
     );
   }, [props, editorRef]);
 
