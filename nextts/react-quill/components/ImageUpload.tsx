@@ -29,7 +29,7 @@ export const ImageUpload = () => {
   const deleteImage = (clickedImage: File) => {
     const dataTransfer = new DataTransfer();
 
-    Array.from(imageFiles)
+    Array.from(imageFiles as FileList)
       .filter((file) => file !== clickedImage)
       .forEach((file) => {
         dataTransfer.items.add(file);
