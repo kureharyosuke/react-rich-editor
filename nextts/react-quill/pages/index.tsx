@@ -7,6 +7,7 @@ import { Editor1 } from "../components/Editor1/Editor1";
 import { QuillEditor } from "../components/Quill/Quill";
 import TUIEditor from "../components/Toast/ToastEditor";
 import WysiwygEditor from "../components/Toast1/Toast1";
+import { ImageInput } from "../components/Image/ImageInput";
 
 const Home: NextPage = () => {
   return (
@@ -21,6 +22,7 @@ const Home: NextPage = () => {
       {/* <TUIEditor onChange={(e) => console.log(e)} /> */}
       <WysiwygEditor onChange={(e) => console.log(e)} />
       {/* <QuillEditor /> */}
+      <ImageInput />
     </div>
   );
 };
