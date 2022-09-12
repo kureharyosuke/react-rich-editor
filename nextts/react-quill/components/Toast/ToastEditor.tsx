@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React, { useRef, useCallback, forwardRef } from "react";
+import React, { useRef, useCallback, forwardRef, useState } from "react";
 import { Editor as EditorType, EditorProps } from "@toast-ui/react-editor";
 import { TuiEditorWithForwardedProps } from "./TUIEditorWrapper";
 
@@ -35,7 +35,8 @@ const EditorWithForwardedRef = React.memo(
 );
 
 const TUIEditor = ({ onChange, ...props }: ITUIEditorProps) => {
-  const { initialValue, height } = props;
+  // const { initialValue, height } = props;
+  const [initialValue, setInitialValue] = useState<any>([]);
 
   const editorRef = useRef<EditorType>();
   const handleChange = useCallback(() => {
@@ -55,7 +56,7 @@ const TUIEditor = ({ onChange, ...props }: ITUIEditorProps) => {
         hideModeSwitch
         usageStatistics={false}
         initialValue={initialValue}
-        height={height || "600px"}
+        height={"600px"}
         onChange={handleChange}
         initialEditType="wysiwyg"
         toolbarItems={[
@@ -72,6 +73,12 @@ const TUIEditor = ({ onChange, ...props }: ITUIEditorProps) => {
             "link",
           ],
         ]}
+        hooks={{
+          addImageBlobHook: async (blob, callback) => {
+            // console.log(blob);
+            setInitialValue([...initialValue, blob] as any[]);
+          },
+        }}
         {...props}
       />
     </div>
